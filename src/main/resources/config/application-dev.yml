@@ -32,9 +32,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./target/h2db/db/ejemplojdl;DB_CLOSE_DELAY=-1;MODE=LEGACY
-    username: EjemploJDL
-    password:
+    url: jdbc:mysql://m1pyfvx5rn4zzd0e:li75oncnkw32gzwu@jtb9ia3h1pgevwb1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ox3kuw4u9zaq4le6
+    username: m1pyfvx5rn4zzd0e
+    password: li75oncnkw32gzwu
     hikari:
       poolName: Hikari
       auto-commit: false
