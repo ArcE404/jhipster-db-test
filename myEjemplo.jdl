@@ -1,0 +1,86 @@
+
+application {
+  config {
+    baseName EjemploJDL,
+    applicationType monolith,
+    packageName com.cenfotec,
+    authenticationType session,
+    devDatabaseType h2Disk,
+    prodDatabaseType mysql,
+    clientFramework angular,
+    buildTool maven,
+    languages [es,en],
+    nativeLanguage es,
+    enableTranslation true
+  }
+  entities *
+}
+
+
+enum CategoryStatus {
+  AVAILABLE,RESTRICTED,DISABLED
+}
+
+enum Genero {
+	MASCULINO,FEMENINO
+}
+
+
+entity Ejemplo(miEjemplo) {
+	campo1 String required unique minlength(8) maxlength(100),
+    capo2 Integer min(0),
+    campo3 Boolean required,
+    campo4 LocalDate,
+    campo5 Genero
+}
+
+entity Category(categoria) {
+	description String required minlength(8) maxlength(150),
+    sortOrder Integer min(0),
+    dateAdded LocalDate,
+    dateModified LocalDate, 
+    status CategoryStatus,
+    genero Genero
+}
+
+entity Product {
+    title String required unique,
+    keywords String required,
+    description String required,
+    rating Integer min(0),
+    dateAdded LocalDate,
+    dateModified LocalDate,
+    price Integer min(0)
+}
+
+entity Customer {
+    firstName String,
+    lastName String,
+    email String,
+    telephone String
+}
+
+entity Address {
+    address1 String,
+    address2 String,
+    city String,
+    postcode String required maxlength(10),
+    country String required maxlength(2)
+}
+
+relationship OneToMany {
+	Customer{address} to Address{customer}
+}
+
+relationship ManyToOne {
+	Category{parent(description)} to Category
+}
+
+relationship ManyToMany {
+	Category{product(title)} to Product{category}
+}
+
+paginate Address, Customer, Product, Category with pagination
+service Category, Customer with serviceClass 
+service Product with serviceImpl
+    

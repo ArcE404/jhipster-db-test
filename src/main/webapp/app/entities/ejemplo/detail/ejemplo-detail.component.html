@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ejemplo">
+      <h2 data-cy="ejemploDetailsHeading"><span jhiTranslate="ejemploJdlApp.ejemplo.detail.title">Ejemplo</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ejemplo.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ejemploJdlApp.ejemplo.campo1">Campo 1</span></dt>
+        <dd>
+          <span>{{ ejemplo.campo1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="ejemploJdlApp.ejemplo.capo2">Capo 2</span></dt>
+        <dd>
+          <span>{{ ejemplo.capo2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="ejemploJdlApp.ejemplo.campo3">Campo 3</span></dt>
+        <dd>
+          <span>{{ ejemplo.campo3 }}</span>
+        </dd>
+        <dt><span jhiTranslate="ejemploJdlApp.ejemplo.campo4">Campo 4</span></dt>
+        <dd>
+          <span>{{ ejemplo.campo4 | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="ejemploJdlApp.ejemplo.campo5">Campo 5</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ejemploJdlApp.Genero.' + ejemplo.campo5 }}">{{ ejemplo.campo5 }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ejemplo', ejemplo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

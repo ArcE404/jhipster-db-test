@@ -1,0 +1,28 @@
+{
+  "ejemploJdlApp": {
+    "ejemplo": {
+      "home": {
+        "title": "Ejemplos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Ejemplo",
+        "createOrEditLabel": "Crear o editar Ejemplo",
+        "notFound": "Ningún Ejemplos encontrado"
+      },
+      "created": "Un nuevo Ejemplo ha sido creado con el identificador {{ param }}",
+      "updated": "Un Ejemplo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Ejemplo ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Ejemplo {{ id }}?"
+      },
+      "detail": {
+        "title": "Ejemplo"
+      },
+      "id": "ID",
+      "campo1": "Campo 1",
+      "capo2": "Capo 2",
+      "campo3": "Campo 3",
+      "campo4": "Campo 4",
+      "campo5": "Campo 5"
+    }
+  }
+}

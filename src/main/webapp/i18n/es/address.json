@@ -1,0 +1,29 @@
+{
+  "ejemploJdlApp": {
+    "address": {
+      "home": {
+        "title": "Addresses",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Address",
+        "createOrEditLabel": "Crear o editar Address",
+        "notFound": "Ningún Addresses encontrado"
+      },
+      "created": "Un nuevo Address ha sido creado con el identificador {{ param }}",
+      "updated": "Un Address ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Address ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Address {{ id }}?"
+      },
+      "detail": {
+        "title": "Address"
+      },
+      "id": "ID",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "postcode": "Postcode",
+      "country": "Country",
+      "customer": "Customer"
+    }
+  }
+}

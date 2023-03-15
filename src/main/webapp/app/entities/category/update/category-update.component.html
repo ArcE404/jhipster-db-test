@@ -1,0 +1,179 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-category-heading" data-cy="CategoryCreateUpdateHeading" jhiTranslate="ejemploJdlApp.category.home.createOrEditLabel">
+        Crear o editar Category
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ejemploJdlApp.category.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+          <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('description')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Este campo es obligatorio.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('description')?.errors?.minlength"
+              jhiTranslate="entity.validation.minlength"
+              [translateValues]="{ min: 8 }"
+            >
+              Este campo requiere al menos 8 caracteres.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('description')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 150 }"
+            >
+              Este campo no puede superar más de 150 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ejemploJdlApp.category.sortOrder" for="field_sortOrder">Sort Order</label>
+          <input type="number" class="form-control" name="sortOrder" id="field_sortOrder" data-cy="sortOrder" formControlName="sortOrder" />
+          <div *ngIf="editForm.get('sortOrder')!.invalid && (editForm.get('sortOrder')!.dirty || editForm.get('sortOrder')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('sortOrder')?.errors?.min"
+              jhiTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              Este campo debe ser mayor que 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('sortOrder')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              Este campo debe ser un número.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ejemploJdlApp.category.dateAdded" for="field_dateAdded">Date Added</label>
+          <div class="input-group">
+            <input
+              id="field_dateAdded"
+              data-cy="dateAdded"
+              type="text"
+              class="form-control"
+              name="dateAdded"
+              ngbDatepicker
+              #dateAddedDp="ngbDatepicker"
+              formControlName="dateAdded"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateAddedDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ejemploJdlApp.category.dateModified" for="field_dateModified">Date Modified</label>
+          <div class="input-group">
+            <input
+              id="field_dateModified"
+              data-cy="dateModified"
+              type="text"
+              class="form-control"
+              name="dateModified"
+              ngbDatepicker
+              #dateModifiedDp="ngbDatepicker"
+              formControlName="dateModified"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateModifiedDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ejemploJdlApp.category.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'ejemploJdlApp.CategoryStatus.null' | translate }}</option>
+            <option *ngFor="let categoryStatus of categoryStatusValues" [value]="categoryStatus">
+              {{ 'ejemploJdlApp.CategoryStatus.' + categoryStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ejemploJdlApp.category.genero" for="field_genero">Genero</label>
+          <select class="form-control" name="genero" formControlName="genero" id="field_genero" data-cy="genero">
+            <option [ngValue]="null">{{ 'ejemploJdlApp.Genero.null' | translate }}</option>
+            <option *ngFor="let genero of generoValues" [value]="genero">{{ 'ejemploJdlApp.Genero.' + genero | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ejemploJdlApp.category.parent" for="field_parent">Parent</label>
+          <select
+            class="form-control"
+            id="field_parent"
+            data-cy="parent"
+            name="parent"
+            formControlName="parent"
+            [compareWith]="compareCategory"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="categoryOption" *ngFor="let categoryOption of categoriesSharedCollection">
+              {{ categoryOption.description }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="ejemploJdlApp.category.product" for="field_products">Product</label>
+          <select
+            class="form-control"
+            id="field_products"
+            data-cy="product"
+            multiple
+            name="products"
+            formControlName="products"
+            [compareWith]="compareProduct"
+          >
+            <option [ngValue]="productOption" *ngFor="let productOption of productsSharedCollection">{{ productOption.title }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+{
+  "applications": ["EjemploJDL"],
+  "changelogDate": "20230311010956",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "mi_ejemplo",
+  "fields": [
+    {
+      "fieldName": "campo1",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "100",
+      "fieldValidateRulesMinlength": "8"
+    },
+    {
+      "fieldName": "capo2",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "campo3",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "campo4",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "campo5",
+      "fieldType": "Genero",
+      "fieldValues": "MASCULINO,FEMENINO"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Ejemplo",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}
