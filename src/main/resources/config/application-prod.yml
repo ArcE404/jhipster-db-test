@@ -33,9 +33,9 @@ spring:
       enabled: false
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: $(JAWSDB_URL)
-    username: $(USER_NAME)
-    password: $(PASSWORD)
+    url: jdbc:mysql://m1pyfvx5rn4zzd0e:li75oncnkw32gzwu@jtb9ia3h1pgevwb1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ox3kuw4u9zaq4le6
+    username: li75oncnkw32gzwu
+    password: m1pyfvx5rn4zzd0e
     hikari:
       poolName: Hikari
       auto-commit: false
