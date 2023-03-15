@@ -48,7 +48,7 @@
         <jhipster-dependencies.version>7.9.3</jhipster-dependencies.version>
         <!-- The spring-boot version should match the one managed by
         https://mvnrepository.com/artifact/tech.jhipster/jhipster-dependencies/${jhipster-dependencies.version} -->
-        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
+        <spring-boot.version>2.7.3</spring-boot.version>
         <!-- The hibernate version should match the one managed by
         https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies/${spring-boot.version} -->
         <hibernate.version>5.6.10.Final</hibernate.version>
@@ -57,7 +57,7 @@
         <liquibase.version>4.15.0</liquibase.version>
         <liquibase-hibernate5.version>4.15.0</liquibase-hibernate5.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
-        <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
+        <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
         <archunit-junit5.version>0.22.0</archunit-junit5.version>
         <mapstruct.version>1.5.2.Final</mapstruct.version>
         <!-- Plugin versions -->
@@ -639,10 +639,10 @@
                                 <message>You are running an older version of Maven. JHipster requires at least Maven ${maven.version}</message>
                                 <version>[${maven.version},)</version>
                             </requireMavenVersion>
-                            <!--<requireJavaVersion>
+                            <requireJavaVersion>
                                 <message>You are running an incompatible version of Java. JHipster supports JDK 11 to 18.</message>
                                 <version>[11,12),[12,13),[13,14),[14,15),[15,16),[16,17),[17,18),[18,19)</version>
-                            </requireJavaVersion>-->
+                            </requireJavaVersion>
                         </rules>
                     </configuration>
                 </plugin>
