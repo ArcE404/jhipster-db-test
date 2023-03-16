@@ -34,8 +34,8 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:mysql://m1pyfvx5rn4zzd0e:li75oncnkw32gzwu@jtb9ia3h1pgevwb1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ox3kuw4u9zaq4le6
-    username: li75oncnkw32gzwu
-    password: lj4qsa19yvbt4nue
+    username: m1pyfvx5rn4zzd0e
+    password: rhatd3ucm2ewbmfl
     hikari:
       poolName: Hikari
       auto-commit: false
